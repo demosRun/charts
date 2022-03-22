@@ -1,0 +1,77 @@
+<template lang="pug">
+.home
+  #chart
+  .select-box
+  h2 选择图表类型
+  select#dataType
+    option(value="funnel") 漏斗图
+    option(value="radar") 雷达图
+  h2 下载数据示例
+  .down(o-tap="down") 点击下载
+  h2 上传数据文件
+  
+  input#fileUp(type="file")
+</template>
+
+<script>
+  module.exports = {
+    created: function () {
+      const input = document.querySelector('#fileUp');
+
+      input.addEventListener('input', ()=> {
+          const inputFile = input.files[0];
+          if (inputFile) {
+              const reader = new FileReader();
+              let resultFile = input.files[0]
+              //获得本地的图片地址  放在reader.result内
+              // 读取纯文本文件,且编码格式为 utf-8
+              reader.readAsText(resultFile, 'UTF-8')
+              
+              // 读取文件,会触发 onload 异步事件,可使用回调函数 来获取最终的值.
+              reader.onload = (e) => {
+                let fileContent = e.target.result
+                const typeTemp = document.querySelector('#dataType').value
+                switch (typeTemp) {
+                  case 'radar':
+                    this.init(radarHandle(fileContent))
+                    break;
+                  case 'funnel':
+                    this.init(funnelHandle(fileContent))
+                    break;
+                  default:
+                    break;
+                }
+                
+              }
+          }
+      })
+    },
+    down: function () {
+      const typeTemp = document.querySelector('#dataType').value
+      switch (typeTemp) {
+        case 'radar':
+          window.open('https://cunchu.site/mock/chart_csv/%E9%9B%B7%E8%BE%BE%E5%9B%BE.csv')
+          break;
+        case 'funnel':
+          window.open('https://cunchu.site/mock/chart_csv/%E6%BC%8F%E6%96%97%E5%9B%BE.csv')
+          break;
+        default:
+          break;
+      }
+    },
+    init: function (option) {
+      var chartDom = document.getElementById('chart');
+      var myChart = echarts.init(chartDom);
+
+      option && myChart.setOption(option);
+    }
+  }
+</script>
+
+
+<style lang="less">
+#chart {
+  width: 600px;
+  height: 600px;
+}
+</style>

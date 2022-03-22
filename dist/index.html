@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <!-- 页面的元信息 -->
+    <title>测试预览页面</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=1000, user-scalable=yes"/>
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="white"/>
+    <meta name="renderer" content="webkit"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="filetype" content="1"/>
+    <meta name="publishedtype" content="1"/>
+    <meta name="pagetype" content="2"/>
+    <meta name="description" content="{TAG_59447_TAG}"/>
+    <meta name="keywords" content="{TAG_59446_TAG}"/>
+    <meta name="catalogs" content="{TAG_83943_TAG}"/>
+    
+      <!-- 页面主样式文件 -->
+      <link charset="utf-8"  rel="stylesheet" href="./static/css/owo.core.css">
+      
+    <!-- 附属css文件 -->
+    <link rel="stylesheet" href="./static/css/main.css" charset="utf-8">
+      
+  </head>
+  <body>
+    
+    <!-- 页面[page]-->
+    <div class="home page" template="page" style="display: block;"><div id="chart"></div><div class="select-box"></div><h2>选择图表类型</h2><select id="dataType"><option value="funnel">漏斗图</option><option value="radar">雷达图</option></select><h2>下载数据示例</h2><div class="down" o-tap="down">点击下载</div><h2>上传数据文件</h2><input id="fileUp" type="file"></div>
+    
+<!-- 框架script文件 -->
+<script src="./static/js/owo.core.js" type="text/javascript" charset="UTF-8"></script>
+<script type="text/javascript" charset="UTF-8">
+owo.script = {
+  "page": {
+    "created": function created() {
+      var _this = this;
+
+      var input = document.querySelector('#fileUp');
+      input.addEventListener('input', function () {
+        var inputFile = input.files[0];
+
+        if (inputFile) {
+          var reader = new FileReader();
+          var resultFile = input.files[0]; //获得本地的图片地址  放在reader.result内
+          // 读取纯文本文件,且编码格式为 utf-8
+
+          reader.readAsText(resultFile, 'UTF-8'); // 读取文件,会触发 onload 异步事件,可使用回调函数 来获取最终的值.
+
+          reader.onload = function (e) {
+            var fileContent = e.target.result;
+            var typeTemp = document.querySelector('#dataType').value;
+
+            switch (typeTemp) {
+              case 'radar':
+                _this.init(radarHandle(fileContent));
+
+                break;
+
+              case 'funnel':
+                _this.init(funnelHandle(fileContent));
+
+                break;
+
+              default:
+                break;
+            }
+          };
+        }
+      });
+    },
+    "down": function down() {
+      var typeTemp = document.querySelector('#dataType').value;
+
+      switch (typeTemp) {
+        case 'radar':
+          window.open('https://cunchu.site/mock/chart_csv/%E9%9B%B7%E8%BE%BE%E5%9B%BE.csv');
+          break;
+
+        case 'funnel':
+          window.open('https://cunchu.site/mock/chart_csv/%E6%BC%8F%E6%96%97%E5%9B%BE.csv');
+          break;
+
+        default:
+          break;
+      }
+    },
+    "init": function init(option) {
+      var chartDom = document.getElementById('chart');
+      var myChart = echarts.init(chartDom);
+      option && myChart.setOption(option);
+    }
+  }
+};
+</script>
+
+    <script src="./static/js/main.js" type="text/javascript"  charset="UTF-8"></script>
+    <script src="./static/js/echarts.min.js.js" type="text/javascript"  charset="UTF-8"></script>
+
+  </body>
+</html>

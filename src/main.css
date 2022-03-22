@@ -1,0 +1,175 @@
+html {
+  -webkit-text-size-adjust: none;
+  -webkit-font-smoothing: antialiased
+}
+
+body {
+  font: normal 12px/180% 'Microsoft YaHei', 'pingfang SC', 'helvetica neue';
+  color: #333;
+}
+
+*, *::after, *::before {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: 0;
+  border: 0;
+}
+
+a:link, a:visited {
+  color: #333;
+  text-decoration: none;
+}
+
+a, img {
+  -webkit-touch-callout: none;
+}
+
+a:hover {
+  color: #c00;
+  text-decoration: underline;
+}
+
+ol, ul, li {
+  list-style: none;
+}
+
+em, i {
+  font-style: normal;
+}
+
+input, select, textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  font-size: 100%;
+}
+
+button, input, optgroup, select, textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+
+button, input[type=button], input[type=reset], input[type=submit] {
+  cursor: pointer;
+}
+
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+/*clear*/
+
+.clearfix:before, .clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+  overflow: hidden;
+}
+
+.clearfix {
+  zoom: 1;
+}
+
+.g-ellipsis-1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.g-ellipsis-2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.g-ellipsis-3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.g-ellipsis-4 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+/*header*/
+
+.header {
+  height: 35px;
+  background: #fff;
+}
+
+.header span {
+  float: left;
+}
+
+.header span img {
+  margin-top: 2px;
+}
+
+.header em {
+  float: right;
+  line-height: 35px;
+  font-family: \5B8B\4F53;
+}
+
+.header em a {
+  margin: 0 6px;
+}
+
+.header em, .header em a:link, .header em a:visited, .header em a:hover {
+  color: #666;
+}
+
+
+
+.w1000 {
+  position: relative;
+  width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.w1200 {
+  position: relative;
+  width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pc .no-pc, .phone .no-phone {
+  display: none;
+}
+
+.phone .no-phone, .pc .no-pc {
+  display: none;
+}
