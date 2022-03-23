@@ -1,11 +1,13 @@
 html {
   -webkit-text-size-adjust: none;
-  -webkit-font-smoothing: antialiased
+  -webkit-font-smoothing: antialiased;
+  height: 100%;
 }
 
 body {
   font: normal 12px/180% 'Microsoft YaHei', 'pingfang SC', 'helvetica neue';
   color: #333;
+  height: 100%;
 }
 
 *, *::after, *::before {

@@ -1,8 +1,9 @@
 function parseCSV (data, parallel) {
   let returnData = []
+  data = data.replace(/\r\n/g, "\n")
   // 判断是否反向
   if (parallel) {
-    const temp1 = data.split('\r\n')
+    const temp1 = data.split('\n')
     for (let index = 0; index < temp1.length; index++) {
       const element = temp1[index].split(',');
       
@@ -13,7 +14,7 @@ function parseCSV (data, parallel) {
       }
     }
   } else {
-    data.split('\r\n').forEach(element => {
+    data.split('\n').forEach(element => {
       if (element) returnData.push(element.split(','))
     });
   }

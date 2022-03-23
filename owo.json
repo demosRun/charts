@@ -68,6 +68,10 @@
 		{
 			"name": "echarts.min.js",
 			"src": "./src/echarts.min.js"
+		},
+		{
+			"name": "standard",
+			"src": "https://cunchu.site/work/login/standard.js"
 		}
 	],
 	"styleList": [
@@ -75,6 +79,10 @@
 			"name": "main",
 			"src": "./src/main.css",
 			"resource": true
+		},
+		{
+			"name": "standard",
+			"src": "https://cunchu.site/work/login/standard.css"
 		}
 	],
 	"pageList": [

@@ -22,12 +22,13 @@
       
     <!-- 附属css文件 -->
     <link rel="stylesheet" href="./static/css/main.css" charset="utf-8">
+    <link rel="stylesheet" href="https://cunchu.site/work/login/standard.css" charset="utf-8">
       
   </head>
   <body>
     
     <!-- 页面[page]-->
-    <div class="home page" template="page" style="display: block;"><div id="chart"></div><div class="select-box"></div><h2>选择图表类型</h2><select id="dataType"><option value="funnel">漏斗图</option><option value="radar">雷达图</option></select><h2>下载数据示例</h2><div class="down" o-tap="down">点击下载</div><h2>上传数据文件</h2><input id="fileUp" type="file"></div>
+    <div class="home clear page" template="page" style="display: block;"><div class="fr"><div id="chart"></div></div><div class="owo fl"><div class="select-box"></div><h2>选择图表类型</h2><select id="dataType"><option value="funnel">漏斗图</option><option value="radar">雷达图</option></select><h2>导入数据</h2><div class="panel"><div class="down" o-tap="down">点击下载</div><input id="fileUp" type="file"></div><textarea class="data-textbox"></textarea><div class="owo button" o-tap="createdChart">生成图表</div></div></div>
     
 <!-- 框架script文件 -->
 <script src="./static/js/owo.core.js" type="text/javascript" charset="UTF-8"></script>
@@ -35,8 +36,6 @@
 owo.script = {
   "page": {
     "created": function created() {
-      var _this = this;
-
       var input = document.querySelector('#fileUp');
       input.addEventListener('input', function () {
         var inputFile = input.files[0];
@@ -50,25 +49,27 @@ owo.script = {
 
           reader.onload = function (e) {
             var fileContent = e.target.result;
-            var typeTemp = document.querySelector('#dataType').value;
-
-            switch (typeTemp) {
-              case 'radar':
-                _this.init(radarHandle(fileContent));
-
-                break;
-
-              case 'funnel':
-                _this.init(funnelHandle(fileContent));
-
-                break;
-
-              default:
-                break;
-            }
+            document.querySelector('.data-textbox').value = fileContent;
           };
         }
       });
+    },
+    "createdChart": function createdChart() {
+      var fileData = document.querySelector('.data-textbox').value;
+      var typeTemp = document.querySelector('#dataType').value;
+
+      switch (typeTemp) {
+        case 'radar':
+          this.init(radarHandle(fileData));
+          break;
+
+        case 'funnel':
+          this.init(funnelHandle(fileData));
+          break;
+
+        default:
+          break;
+      }
     },
     "down": function down() {
       var typeTemp = document.querySelector('#dataType').value;
@@ -97,6 +98,7 @@ owo.script = {
 
     <script src="./static/js/main.js" type="text/javascript"  charset="UTF-8"></script>
     <script src="./static/js/echarts.min.js.js" type="text/javascript"  charset="UTF-8"></script>
+    <script src="https://cunchu.site/work/login/standard.js" type="text/javascript"  charset="UTF-8"></script>
 
   </body>
 </html>

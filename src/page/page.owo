@@ -1,16 +1,19 @@
 <template lang="pug">
-.home
-  #chart
-  .select-box
-  h2 选择图表类型
-  select#dataType
-    option(value="funnel") 漏斗图
-    option(value="radar") 雷达图
-  h2 下载数据示例
-  .down(o-tap="down") 点击下载
-  h2 上传数据文件
-  
-  input#fileUp(type="file")
+.home.clear
+  .fr
+    #chart
+  .owo.fl
+    .select-box
+    h2 选择图表类型
+    select#dataType
+      option(value="funnel") 漏斗图
+      option(value="radar") 雷达图
+    h2 导入数据
+    .panel
+      .down(o-tap="down") 点击下载
+      input#fileUp(type="file")
+    textarea.data-textbox
+    .owo.button(o-tap="createdChart") 生成图表
 </template>
 
 <script>
@@ -30,21 +33,24 @@
               // 读取文件,会触发 onload 异步事件,可使用回调函数 来获取最终的值.
               reader.onload = (e) => {
                 let fileContent = e.target.result
-                const typeTemp = document.querySelector('#dataType').value
-                switch (typeTemp) {
-                  case 'radar':
-                    this.init(radarHandle(fileContent))
-                    break;
-                  case 'funnel':
-                    this.init(funnelHandle(fileContent))
-                    break;
-                  default:
-                    break;
-                }
-                
+                document.querySelector('.data-textbox').value = fileContent
               }
           }
       })
+    },
+    createdChart: function () {
+      const fileData = document.querySelector('.data-textbox').value
+      const typeTemp = document.querySelector('#dataType').value
+      switch (typeTemp) {
+        case 'radar':
+          this.init(radarHandle(fileData))
+          break;
+        case 'funnel':
+          this.init(funnelHandle(fileData))
+          break;
+        default:
+          break;
+      }      
     },
     down: function () {
       const typeTemp = document.querySelector('#dataType').value
@@ -70,8 +76,25 @@
 
 
 <style lang="less">
+.home {
+  width: 100%;
+  height: 100%;
+}
 #chart {
   width: 600px;
   height: 600px;
+}
+.fr {
+  width: calc(100% - 340px);
+  height: 100%;
+}
+.owo.fl {
+  width: 340px;
+  height: 100%;
+}
+.owo textarea.data-textbox {
+  height: 330px;
+  font-size: 14px;
+  line-height: 20px;
 }
 </style>
