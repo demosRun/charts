@@ -8,6 +8,8 @@
     select#dataType
       option(value="funnel") 漏斗图
       option(value="radar") 雷达图
+      option(value="line") 折线图
+      option(value="bar") 柱状图
     h2 导入数据
     .panel
       .down(o-tap="down") 点击下载
@@ -47,6 +49,12 @@
           break;
         case 'funnel':
           this.init(funnelHandle(fileData))
+          break;
+        case 'line':
+          this.init(lineHandle(fileData))
+          break;
+        case 'bar':
+          this.init(barHandle(fileData))
           break;
         default:
           break;

@@ -28,7 +28,7 @@
   <body>
     
     <!-- 页面[page]-->
-    <div class="home clear page" template="page" style="display: block;"><div class="fr"><div id="chart"></div></div><div class="owo fl"><div class="select-box"></div><h2>选择图表类型</h2><select id="dataType"><option value="funnel">漏斗图</option><option value="radar">雷达图</option></select><h2>导入数据</h2><div class="panel"><div class="down" o-tap="down">点击下载</div><input id="fileUp" type="file"></div><textarea class="data-textbox"></textarea><div class="owo button" o-tap="createdChart">生成图表</div></div></div>
+    <div class="home clear page" template="page" style="display: block;"><div class="fr"><div id="chart"></div></div><div class="owo fl"><div class="select-box"></div><h2>选择图表类型</h2><select id="dataType"><option value="funnel">漏斗图</option><option value="radar">雷达图</option><option value="line">折线图</option><option value="bar">柱状图</option></select><h2>导入数据</h2><div class="panel"><div class="down" o-tap="down">点击下载</div><input id="fileUp" type="file"></div><textarea class="data-textbox"></textarea><div class="owo button" o-tap="createdChart">生成图表</div></div></div>
     
 <!-- 框架script文件 -->
 <script src="./static/js/owo.core.js" type="text/javascript" charset="UTF-8"></script>
@@ -65,6 +65,14 @@ owo.script = {
 
         case 'funnel':
           this.init(funnelHandle(fileData));
+          break;
+
+        case 'line':
+          this.init(lineHandle(fileData));
+          break;
+
+        case 'bar':
+          this.init(barHandle(fileData));
           break;
 
         default:

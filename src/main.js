@@ -99,3 +99,44 @@ function funnelHandle (fileContent) {
     ]
   }
 }
+
+
+function lineHandle (fileContent) {
+  const chartData = parseCSV(fileContent)
+  const chartData2 = parseCSV(fileContent, true)
+  return {
+    xAxis: {
+      type: 'category',
+      data: chartData2[0].slice(1)
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [
+      {
+        data: chartData2[1].slice(1),
+        type: 'line'
+      }
+    ]
+  }
+}
+
+function barHandle (fileContent) {
+  const chartData = parseCSV(fileContent)
+  const chartData2 = parseCSV(fileContent, true)
+  return {
+    xAxis: {
+      type: 'category',
+      data: chartData2[0].slice(1)
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [
+      {
+        data: chartData2[1].slice(1),
+        type: 'bar'
+      }
+    ]
+  }
+}
