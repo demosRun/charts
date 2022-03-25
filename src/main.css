@@ -175,3 +175,29 @@ table {
 .phone .no-phone, .pc .no-pc {
   display: none;
 }
+
+.owo-lable {
+  line-height: 40px;
+}
+
+.owo.owo-lable span, .owo.owo-lable input, .owo.owo-lable .button {
+  line-height: 40px;
+  display: inline-block;
+  float: left;
+  margin: 0 5px;
+  font-size: 14px;
+}
+.owo.owo-lable input[type="text"], .owo.owo-lable input[type="number"], .owo.owo-lable input[type="date"], .owo.owo-lable input[type="time"] {
+  width: 60px;
+  height: 30px;
+  margin: 5px;
+}
+
+.owo.owo-lable .button {
+  width: 60px;
+  height: 30px;
+  line-height: 30px;
+  font-size: 14px;
+  margin: 5px 10px;
+  box-shadow: none;
+}

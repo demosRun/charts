@@ -140,3 +140,19 @@ function barHandle (fileContent) {
     ]
   }
 }
+
+function scatterHandle (fileContent) {
+  const chartData = parseCSV(fileContent)
+  const chartData2 = parseCSV(fileContent, true)
+  return {
+    xAxis: {},
+    yAxis: {},
+    series: [
+      {
+        symbolSize: 20,
+        data: chartData,
+        type: 'scatter'
+      }
+    ]
+  }
+}

@@ -80,3 +80,22 @@ li {
   line-height: 20px;
 }
 
+.left-panel {
+  border-right: 1px solid #ccc;
+}
+
+.chart-box {
+  height: calc(100% - 41px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.bottom-bar {
+  height: 40px;
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: right;
+  padding: 0 10px;
+}
+

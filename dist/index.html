@@ -28,13 +28,16 @@
   <body>
     
     <!-- 页面[page]-->
-    <div class="home clear page" template="page" style="display: block;"><div class="fr"><div id="chart"></div></div><div class="owo fl"><div class="select-box"></div><h2>选择图表类型</h2><select id="dataType"><option value="funnel">漏斗图</option><option value="radar">雷达图</option><option value="line">折线图</option><option value="bar">柱状图</option></select><h2>导入数据</h2><div class="panel"><div class="down" o-tap="down">点击下载</div><input id="fileUp" type="file"></div><textarea class="data-textbox"></textarea><div class="owo button" o-tap="createdChart">生成图表</div></div></div>
+    <div class="home clear page" template="page" style="display: block;"><div class="owo fl left-panel"><div class="select-box"></div><h2>选择图表类型</h2><select id="dataType"><option value="funnel">漏斗图</option><option value="radar">雷达图</option><option value="line">折线图</option><option value="bar">柱状图</option><option value="scatter">散点图</option></select><h2>选择颜色风格</h2><select id="dataType"><option value="[]">默认风格</option><option value="['#b0222e','#f0cb7a','#f9d895']">风格1</option></select><h2>导入数据</h2><div class="panel"><div class="down" o-tap="down">点击下载</div><input id="fileUp" type="file"></div><textarea class="data-textbox"></textarea><h2>图表宽度</h2><input class="chart-width" type="number" value="800"><h2>图表高度</h2><input class="chart-height" type="number" value="800"><div class="owo button" o-tap="createdChart">生成图表</div></div><div class="fr"><div class="chart-box"><div id="chart"></div></div><div class="bottom-bar clear"><div class="owo owo-lable"></div></div></div></div>
     
 <!-- 框架script文件 -->
 <script src="./static/js/owo.core.js" type="text/javascript" charset="UTF-8"></script>
 <script type="text/javascript" charset="UTF-8">
 owo.script = {
   "page": {
+    "data": {
+      "myChart": null
+    },
     "created": function created() {
       var input = document.querySelector('#fileUp');
       input.addEventListener('input', function () {
@@ -75,6 +78,10 @@ owo.script = {
           this.init(barHandle(fileData));
           break;
 
+        case 'scatter':
+          this.init(scatterHandle(fileData));
+          break;
+
         default:
           break;
       }
@@ -96,9 +103,16 @@ owo.script = {
       }
     },
     "init": function init(option) {
+      if (this.data.myChart) {
+        this.data.myChart.dispose();
+        this.data.myChart = null;
+      }
+
       var chartDom = document.getElementById('chart');
-      var myChart = echarts.init(chartDom);
-      option && myChart.setOption(option);
+      chartDom.style.width = document.querySelector('.chart-width').value + 'px';
+      chartDom.style.height = document.querySelector('.chart-height').value + 'px';
+      this.data.myChart = echarts.init(chartDom);
+      option && this.data.myChart.setOption(option);
     }
   }
 };

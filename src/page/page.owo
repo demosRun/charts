@@ -1,8 +1,6 @@
 <template lang="pug">
 .home.clear
-  .fr
-    #chart
-  .owo.fl
+  .owo.fl.left-panel
     .select-box
     h2 选择图表类型
     select#dataType
@@ -10,16 +8,33 @@
       option(value="radar") 雷达图
       option(value="line") 折线图
       option(value="bar") 柱状图
+      option(value="scatter") 散点图
+    h2 选择颜色风格
+    select#dataType
+      option(value="[]") 默认风格
+      option(value="['#b0222e','#f0cb7a','#f9d895']") 风格1
     h2 导入数据
     .panel
       .down(o-tap="down") 点击下载
       input#fileUp(type="file")
     textarea.data-textbox
+    h2 图表宽度
+    input.chart-width(type="number" value="800")
+    h2 图表高度
+    input.chart-height(type="number" value="800")
     .owo.button(o-tap="createdChart") 生成图表
+  .fr
+    .chart-box
+      #chart
+    .bottom-bar.clear
+      .owo.owo-lable
 </template>
 
 <script>
   module.exports = {
+    data: {
+      myChart: null
+    },
     created: function () {
       const input = document.querySelector('#fileUp');
 
@@ -56,6 +71,9 @@
         case 'bar':
           this.init(barHandle(fileData))
           break;
+        case 'scatter':
+          this.init(scatterHandle(fileData))
+          break;
         default:
           break;
       }      
@@ -74,10 +92,16 @@
       }
     },
     init: function (option) {
+      if (this.data.myChart) {
+        this.data.myChart.dispose()
+        this.data.myChart = null
+      }
       var chartDom = document.getElementById('chart');
-      var myChart = echarts.init(chartDom);
+      chartDom.style.width = document.querySelector('.chart-width').value + 'px'
+      chartDom.style.height = document.querySelector('.chart-height').value + 'px'
+      this.data.myChart = echarts.init(chartDom);
 
-      option && myChart.setOption(option);
+      option && this.data.myChart.setOption(option);
     }
   }
 </script>
@@ -104,5 +128,21 @@
   height: 330px;
   font-size: 14px;
   line-height: 20px;
+}
+.left-panel {
+  border-right: 1px solid #ccc;
+}
+.chart-box {
+  height: calc(100% - 41px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.bottom-bar {
+  height: 40px;
+  border-top: 1px solid #ccc;
+  display: flex;
+  justify-content: right;
+  padding: 0 10px;
 }
 </style>
