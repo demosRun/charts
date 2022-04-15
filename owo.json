@@ -70,6 +70,10 @@
 			"src": "./src/echarts.min.js"
 		},
 		{
+			"name": "tabIt",
+			"src": "https://cunchu.site/owo/script/tabIt.js"
+		},
+		{
 			"name": "standard",
 			"src": "https://cunchu.site/work/login/standard.js"
 		}
@@ -86,6 +90,11 @@
 		}
 	],
 	"pageList": [
+		{
+			"name": "start",
+			"src": "/src/page/start.owo",
+			"type": "page"
+		},
 		{
 			"name": "page",
 			"src": "./src/page/page.owo",

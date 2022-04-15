@@ -1,0 +1,52 @@
+<template lang="pug">
+.start
+  plug(_name="module6" _src="http://lamp.run:8082/504bcad8da1a28e9.owo")
+  .title 网上群众工作部<br>在线数据编辑平台
+  .start-button(go="page") 开始使用
+  plug(_name="module2" _src="http://lamp.run:8082/0d0151b82309f7a7.owo")
+</template>
+<script>
+module.exports = {
+}
+</script>
+<style lang="less">
+.start {
+    background-image: url('@|bg.jpg|');
+    width: 100%;
+    height: 100%;
+    background-size: auto 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: #3639a0;
+}
+.title {
+    position: absolute;
+    font-size: 40px;
+    left: -30%;
+    right: 0;
+    margin: auto;
+    width: 600px;
+    line-height: 52px;
+    top: 32%;
+    font-weight: bold;
+    color: #396df9;
+}
+.start-button {
+    position: absolute;
+    font-size: 21px;
+    left: -54%;
+    right: 0;
+    margin: auto;
+    width: 130px;
+    line-height: 52px;
+    top: 59%;
+    color: white;
+    background-color: #396df9;
+    text-align: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.steep, .title-bar .back {
+  display: none;
+}
+</style>

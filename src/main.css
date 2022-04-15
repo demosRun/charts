@@ -201,3 +201,34 @@ table {
   margin: 5px 10px;
   box-shadow: none;
 }
+
+.title-bar[step="1"] .steep .item.item-1 span{
+  color: #396df9;
+}
+.title-bar[step="1"] .steep .item.item-1 .index{
+  color: #396df9;
+  border-color: #396df9;
+}
+.title-bar[step="2"] .steep .item.item-2 span{
+  color: #396df9;
+}
+.title-bar[step="2"] .steep .item.item-2 .index{
+  color: #396df9;
+  border-color: #396df9;
+}
+
+.title-bar[step="2"] .back, .title-bar[step="2"] .dc-button {
+  display: block;
+  cursor: pointer;
+}
+
+.share {
+  max-width: 100%;
+  display: block;
+  max-height: 440px;
+  margin: 0 auto;
+}
+
+.cd-popup-container.popup-panel {
+  max-width: 800px;
+}

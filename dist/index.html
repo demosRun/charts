@@ -27,19 +27,73 @@
   </head>
   <body>
     
+    <!-- 页面[start]-->
+    <div class="start page" template="start" style="display: none;"><div class="title-bar" step="1">
+    <div class="content">
+      <a target="_blank" href="http://www.people.com.cn/">
+        <img width="80" height="30" alt="人民网" title="人民网" src="https://cunchu.site/upload/dbf7534a99f62fca.png">
+      </a>
+    </div>
+    <div class="steep">
+      <div class="item item-1" onclick="document.querySelector('.select-pannel').style.display = 'block';document.querySelector('.home .title-bar').setAttribute('step', 1);">
+        <div class="index">1</div>
+        <span>选择图表模板</span>
+      </div>
+      <img src="./static/images/line-2.png">
+      <div class="item item-2">
+        <div class="index">2</div>
+        <span>图表配置</span>
+      </div>
+      <img src="./static/images/line-2.png">
+      <div class="item item-3">
+        <div class="index">3</div>
+        <span>导出</span>
+      </div>
+    </div>
+    <div class="back" onclick="document.querySelector('.select-pannel').style.display = 'block';document.querySelector('.home .title-bar').setAttribute('step', 1);">返回</div>
+    <div class="dc-button" onclick="exportChart()">导出</div>
+  </div><div class="title">网上群众工作部<br>在线数据编辑平台</div><div class="start-button" go="page">开始使用</div><div id="copyright">人 民 网 版 权 所 有 ，未 经 书 面 授 权 禁 止 使 用<br>Copyright © 1997-2021 by www.people.com.cn. all rights reserved</div></div>
     <!-- 页面[page]-->
-    <div class="home clear page" template="page" style="display: block;"><div class="owo fl left-panel"><div class="select-box"></div><h2>选择图表类型</h2><select id="dataType"><option value="funnel">漏斗图</option><option value="radar">雷达图</option><option value="line">折线图</option><option value="bar">柱状图</option><option value="scatter">散点图</option></select><h2>选择颜色风格</h2><select id="dataType"><option value="[]">默认风格</option><option value="['#b0222e','#f0cb7a','#f9d895']">风格1</option></select><h2>导入数据</h2><div class="panel"><div class="down" o-tap="down">点击下载</div><input id="fileUp" type="file"></div><textarea class="data-textbox"></textarea><h2>图表宽度</h2><input class="chart-width" type="number" value="800"><h2>图表高度</h2><input class="chart-height" type="number" value="800"><div class="owo button" o-tap="createdChart">生成图表</div></div><div class="fr"><div class="chart-box"><div id="chart"></div></div><div class="bottom-bar clear"><div class="owo owo-lable"></div></div></div></div>
+    <div class="home clear page" template="page" style="display: none;"><div class="title-bar" step="1">
+    <div class="content">
+      <a target="_blank" href="http://www.people.com.cn/">
+        <img width="80" height="30" alt="人民网" title="人民网" src="https://cunchu.site/upload/dbf7534a99f62fca.png">
+      </a>
+    </div>
+    <div class="steep">
+      <div class="item item-1" onclick="document.querySelector('.select-pannel').style.display = 'block';document.querySelector('.home .title-bar').setAttribute('step', 1);">
+        <div class="index">1</div>
+        <span>选择图表模板</span>
+      </div>
+      <img src="./static/images/line-2.png">
+      <div class="item item-2">
+        <div class="index">2</div>
+        <span>图表配置</span>
+      </div>
+      <img src="./static/images/line-2.png">
+      <div class="item item-3">
+        <div class="index">3</div>
+        <span>导出</span>
+      </div>
+    </div>
+    <div class="back" onclick="document.querySelector('.select-pannel').style.display = 'block';document.querySelector('.home .title-bar').setAttribute('step', 1);">返回</div>
+    <div class="dc-button" onclick="exportChart()">导出</div>
+  </div><div class="owo fl left-panel"><div class="select-box"></div><h2>选择图表类型</h2><select id="dataType"><option value="funnel">漏斗图</option><option value="radar">雷达图</option><option value="line">折线图</option><option value="bar">柱状图</option><option value="scatter">散点图</option><option value="rose">玫瑰图</option><option value="pie">饼状图</option><option value="bar2">正负条形图</option><option value="category">极坐标柱状图</option></select><h2>选择颜色风格</h2><select id="dataType"><option value="[]">默认风格</option><option value="['#b0222e','#f0cb7a','#f9d895']">风格1</option></select><h2>导入数据</h2><div class="panel"><div class="mini-button" o-tap="down">下载图例</div><div class="mini-button"><span>导入数据</span><input id="fileUp" type="file"></div></div><textarea class="data-textbox"></textarea><h2>图表宽度</h2><input class="chart-width" type="number" value="600"><h2>图表高度</h2><input class="chart-height" type="number" value="600"><div class="owo button" o-tap="createdChart">生成图表</div></div><div class="fr"><div class="chart-box"><div id="chart"></div></div><div class="bottom-bar clear"><div class="owo owo-lable"></div></div></div><div class="select-pannel clear"><div class="item fl"><img src="./static/images/funnel.png" o-tap="selectItem('funnel', 'mockData2')"><p>漏斗图</p></div><div class="item fl"><img src="./static/images/radar.png" o-tap="selectItem('radar', 'mockData1')"><p>雷达图</p></div><div class="item fl"><img src="./static/images/line.png" o-tap="selectItem('line', 'mockData4')"><p>折线图</p></div><div class="item fl"><img src="./static/images/bar.png" o-tap="selectItem('bar', 'mockData4')"><p>柱状图</p></div><div class="item fl"><img src="./static/images/scatter.png" o-tap="selectItem('scatter', 'mockData3')"><p>散点图</p></div><div class="item fl"><img src="./static/images/rose.png" o-tap="selectItem('rose', 'mockData2')"><p>玫瑰图</p></div><div class="item fl"><img src="./static/images/pie.png" o-tap="selectItem('pie', 'mockData2')"><p>饼状图  </p></div><div class="item fl"><img src="./static/images/bar2.png" o-tap="selectItem('bar2', 'mockData5')"><p>正负条形图</p></div><div class="item fl"><img src="./static/images/category.png" o-tap="selectItem('category', 'mockData2')"><p>极坐标柱状图</p></div></div></div>
     
 <!-- 框架script文件 -->
 <script src="./static/js/owo.core.js" type="text/javascript" charset="UTF-8"></script>
 <script type="text/javascript" charset="UTF-8">
 owo.script = {
+  "start": {
+    "template": {}
+  },
   "page": {
     "data": {
       "myChart": null
     },
     "created": function created() {
       var input = document.querySelector('#fileUp');
+      document.querySelector('.title-bar').setAttribute('step', 2);
       input.addEventListener('input', function () {
         var inputFile = input.files[0];
 
@@ -82,6 +136,22 @@ owo.script = {
           this.init(scatterHandle(fileData));
           break;
 
+        case 'rose':
+          this.init(roseHandle(fileData));
+          break;
+
+        case 'pie':
+          this.init(pieHandle(fileData));
+          break;
+
+        case 'bar2':
+          this.init(bar2Handle(fileData));
+          break;
+
+        case 'category':
+          this.init(categoryHandle(fileData));
+          break;
+
         default:
           break;
       }
@@ -113,13 +183,26 @@ owo.script = {
       chartDom.style.height = document.querySelector('.chart-height').value + 'px';
       this.data.myChart = echarts.init(chartDom);
       option && this.data.myChart.setOption(option);
-    }
+    },
+    "selectItem": function selectItem(item, mockData) {
+      var _this = this;
+
+      document.querySelector('#dataType').value = item;
+      document.querySelector('.select-pannel').style.display = 'none';
+      document.querySelector('.data-textbox').value = window[mockData];
+      setTimeout(function () {
+        _this.createdChart();
+      }, 0);
+      document.querySelector('.home .title-bar').setAttribute('step', 2);
+    },
+    "template": {}
   }
 };
 </script>
 
     <script src="./static/js/main.js" type="text/javascript"  charset="UTF-8"></script>
     <script src="./static/js/echarts.min.js.js" type="text/javascript"  charset="UTF-8"></script>
+    <script src="https://cunchu.site/owo/script/tabIt.js" type="text/javascript"  charset="UTF-8"></script>
     <script src="https://cunchu.site/work/login/standard.js" type="text/javascript"  charset="UTF-8"></script>
 
   </body>

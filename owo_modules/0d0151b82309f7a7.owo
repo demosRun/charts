@@ -1,0 +1,18 @@
+<template>
+  <div id="copyright">人 民 网 版 权 所 有 ，未 经 书 面 授 权 禁 止 使 用<br>Copyright &copy; 1997-2021 by www.people.com.cn. all rights reserved</div>
+</template>
+
+<style original>
+  #copyright {
+    height: 75px;
+    position: absolute;
+    font-size: 14px;
+    z-index: 999;
+    width: 100%;
+    line-height: 30px;
+    text-align: center;
+    background-color: transparent;
+    bottom: 0;
+    color: white;
+  }
+</style>

@@ -1,0 +1,112 @@
+<template>
+  <div class="title-bar" step="1">
+    <div class="content">
+      <a target="_blank" href="http://www.people.com.cn/">
+        <img width="80" height="30" alt="人民网" title="人民网" src="https://cunchu.site/upload/dbf7534a99f62fca.png"/>
+      </a>
+    </div>
+    <div class="steep">
+      <div class="item item-1" onclick="document.querySelector('.select-pannel').style.display = 'block';document.querySelector('.home .title-bar').setAttribute('step', 1);">
+        <div class="index">1</div>
+        <span>选择图表模板</span>
+      </div>
+      <img src="@|line-2.png|">
+      <div class="item item-2">
+        <div class="index">2</div>
+        <span>图表配置</span>
+      </div>
+      <img src="@|line-2.png|">
+      <div class="item item-3">
+        <div class="index">3</div>
+        <span>导出</span>
+      </div>
+    </div>
+    <div class="back" onclick="document.querySelector('.select-pannel').style.display = 'block';document.querySelector('.home .title-bar').setAttribute('step', 1);">返回</div>
+    <div class="dc-button" onclick="exportChart()">导出</div>
+  </div>
+</template>
+
+<style>
+.title-bar {
+  height: 60px;
+  overflow: hidden;
+  background-color: #ffffff;
+}
+.content {
+  height: 60px;
+  margin: auto;
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+}
+img {
+  margin: 5px 10px;
+  height: 30px;
+}
+a {
+  float: left;
+  display: block;
+}
+.link {
+  color: rgba(102, 102, 102, 1.00);
+  font-size: 14px;
+  margin: 0 10px;
+  line-height: 40px;
+}
+a {
+  color: #333;
+  text-decoration: none;
+}
+.steep {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  display: flex;
+  height: 60px;
+  line-height: 60px;
+  align-items: center;
+  margin: auto;
+  width: 490px;
+}
+.steep .item {
+  display: flex;
+  align-items: center;
+}
+.index {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  text-align: center;
+  line-height: 30px;
+  font-size: 18px;
+  border-radius: 26px;
+  color: #ccc;
+  margin-right: 10px;
+}
+.steep .item span {
+  font-size: 16px;
+  color: #ccc;
+  
+}
+.back {
+  display: none;
+  font-size: 18px;
+  background-color: #f0f3fb;
+  width: 90px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  border-radius: 12px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  left: 20px;
+  color: #396df9;
+  cursor: pointer;
+}
+.dc-button {
+  display: none;
+}
+</style>
